@@ -1,6 +1,7 @@
-# Apograph README
+# Apograph
 
-Autocompletion of terms and sentences from your lecture slides for faster note-taking in Markdown or Typst.
+Apograph (Latin _apographon_: transcript/copy) provides autocompletion of terms and sentences from your lecture slides for faster note-taking in Markdown or Typst.
+It offers additional features such as quick generation of Excalidraw and Draw.io diagrams to make taking notes in VS Code during lectures even easier.
 
 > [!WARNING]
 > Features are still in development and not yet fully functional.
@@ -9,68 +10,25 @@ Autocompletion of terms and sentences from your lecture slides for faster note-t
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+**Quick Diagram Generation**
 
-For example if there is an image subfolder under your extension project workspace:
+New Excalidraw/Draw.io-Diagrams can now be added with one command and are automatically linked as images to the current document.
 
-\!\[feature X\]\(images/feature-x.png\)
+**Typst and Markdown editing enhancements**
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Math blocks and code blocks are now automatically closed (like brackets and parentheses) and can be used to surround selected text.
 
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+In Typst, shortcuts for toggling selected text **bold**/_italic_ are now supported, duplicate blank lines are removed on save, and a trailing newline is added on save.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+- `apograph.supportedLanguages`: Languages, where Test PDF Extractor will be enabled.
+- `apograph.pdfPath`: Path to the PDF, where the completion items should be extracted from.
+- `apograph.excalidraw.defaultName`: The default file name for new Excalidraw Files (will be suggested). Supports dates using Python strftime syntax.
+- `apograph.excalidraw.imageFolder`: The folder, where the Excalidraw images should be saved to.
+- `apograph.experimental.enableLineCompletion`: Enable the completion of entire lines of text.
 
-For example:
+Debug options:
 
-This extension contributes the following settings:
-
-- `myExtension.enable`: Enable/disable this extension.
-- `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-- [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-- Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-- Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+- `apograph.debug.generateProcessingOutput`: Write the output of the PDF processing to a JSON file
+- `apograph.debug.disableCache`: Disable Cache for debugging purposes

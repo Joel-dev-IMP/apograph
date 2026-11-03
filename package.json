@@ -20,6 +20,14 @@
       {
         "title": "Create Draw IO file",
         "command": "apograph.createDrawIO"
+      },
+      {
+        "title": "Toggle bold",
+        "command": "apograph.typst.toggleBold"
+      },
+      {
+        "title": "Toggle italic",
+        "command": "apograph.typst.toggleItalic"
       }
     ],
     "configuration": {
@@ -84,6 +92,20 @@
         }
       }
     },
+    "keybindings": [
+      {
+        "command": "apograph.typst.toggleBold",
+        "key": "ctrl+b",
+        "mac": "cmd+b",
+        "when": "editorTextFocus && !editorReadonly && editorLangId =~ /^typst$/"
+      },
+      {
+        "command": "apograph.typst.toggleItalic",
+        "key": "ctrl+i",
+        "mac": "cmd+i",
+        "when": "editorTextFocus && !editorReadonly && editorLangId =~ /^typst$/"
+      }
+    ],
     "languages": [
       {
         "id": "markdown",
