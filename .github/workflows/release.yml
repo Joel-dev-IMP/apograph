@@ -28,6 +28,8 @@ jobs:
         id: short_sha
         run: echo "short_sha=$(echo ${{github.sha}} | cut -c -7)" >> "$GITHUB_OUTPUT"
 
+      - run: mv "${{steps.package.outputs.packagePath}}" "./apograph-${{ steps.short_sha.outputs.short_sha}}.vsix"
+
       - name: Release
         shell: bash
         env:
@@ -35,4 +37,4 @@ jobs:
         run: |
           set -euo pipefail
           gh release upload "nightly" --repo "$GITHUB_REPOSITORY" --clobber \
-            "${{ steps.package.outputs.packagePath }}#apograph-nightly.vsix"
+            "apograph-${{ steps.short_sha.outputs.short_sha }}.vsix"
