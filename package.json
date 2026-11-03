@@ -17,6 +17,22 @@
         "command": "apograph.helloWorld",
         "title": "Hello World"
       }
+    ],
+    "languages": [
+      {
+        "id": "markdown",
+        "configuration": "./languages/all.config.json"
+      },
+      {
+        "id": "typst",
+        "configuration": "./languages/all.config.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "typst",
+        "path": "./snippets/typst.json"
+      }
     ]
   },
   "scripts": {
