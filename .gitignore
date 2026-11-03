@@ -1,0 +1,11 @@
+out
+dist
+node_modules
+.vscode-test/
+
+# Build files
+*.vsix
+build/
+
+# Spell Checking
+ltex.*
