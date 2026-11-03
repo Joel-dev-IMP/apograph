@@ -2,14 +2,21 @@
   "name": "apograph",
   "displayName": "Apograph",
   "description": "Autocompletion of terms and sentences from your lecture slides for faster note-taking in Markdown or Typst",
+  "author": "Joel-dev-IMP",
+  "publisher": "Joel-dev-IMP",
+  "license": "GPL-3.0-or-later",
   "version": "0.0.1",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.144.0"
   },
   "categories": [
+    "Programming Languages",
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
