@@ -20,3 +20,14 @@ jobs:
         run: echo "short_sha=$(echo ${{github.sha}} | cut -c -7)" >> "$GITHUB_OUTPUT"
 
       - run: ls
+
+      - run: gh release view "nightly" --repo "$GITHUB_REPOSITORY"
+
+      - name: Release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          gh release upload "nightly" --repo "$GITHUB_REPOSITORY" --clobber \
+            "CHANGELOG.md"
