@@ -137,6 +137,12 @@ export function activate(context: vscode.ExtensionContext) {
         new vscode.Range(position.line, 0, position.line, Infinity),
       );
 
+      if (position.line > 0 && position.character === 0) {
+        lineContent = document.getText(
+          new vscode.Range(position.line - 1, 0, position.line - 1, Infinity),
+        );
+      }
+
       lineContent = lineContent.replaceAll(/(\d)\./g, "$1__DOT__");
       const sentences: string[] = lineContent.split(".");
       const lastSentence = sentences[sentences.length - 1].replaceAll(
@@ -154,7 +160,6 @@ export function activate(context: vscode.ExtensionContext) {
         compareString = lastFewWords;
       }
 
-      console.log(compareString);
       // TODO: Better detection
 
       // Avoid triggering autocompletion too fast
@@ -167,27 +172,40 @@ export function activate(context: vscode.ExtensionContext) {
         "apograph_cache",
       );
 
+      let suggestNextLine = false;
+
       for (const line of cache.get("lines") ?? []) {
-        const _t = line
-          .replaceAll(" ", "")
-          .toLowerCase()
-          .indexOf(compareString.replaceAll(" ", "").toLowerCase());
+        if (suggestNextLine) {
+          result.items.push({
+            insertText: line.trim(),
+          });
+          suggestNextLine = false;
+          continue;
+        }
+
+        const normalizedLine = line.replaceAll(" ", "").toLowerCase().trim();
 
         if (
-          line
-            .replaceAll(" ", "")
-            .toLowerCase()
-            .indexOf(compareString.replaceAll(" ", "").toLowerCase()) >= 0
+          normalizedLine.indexOf(
+            compareString.replaceAll(" ", "").toLowerCase(),
+          ) >= 0
         ) {
+          const insertText = line
+            .substring(
+              determineSubstringIndex(
+                compareString.trimEnd().toLowerCase(),
+                line.toLowerCase(),
+              ),
+            )
+            .trimStart();
+
+          if (insertText.length === 0) {
+            suggestNextLine = true;
+            continue;
+          }
+
           result.items.push({
-            insertText: line
-              .substring(
-                determineSubstringIndex(
-                  compareString.trimEnd().toLowerCase(),
-                  line.toLowerCase(),
-                ),
-              )
-              .trimStart(),
+            insertText: insertText,
           });
         }
       }
