@@ -6,6 +6,14 @@
   "publisher": "Joel-dev-IMP",
   "license": "GPL-3.0-or-later",
   "version": "0.0.1",
+  "homepage": "https://github.com/Joel-dev-IMP/apograph/",
+  "bugs": {
+    "url": "https://github.com/Joel-dev-IMP/apograph/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Joel-dev-IMP/apograph.git"
+  },
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.144.0"
