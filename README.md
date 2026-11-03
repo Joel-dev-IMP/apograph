@@ -20,9 +20,15 @@ Math blocks and code blocks are now automatically closed (like brackets and pare
 
 In Typst, shortcuts for toggling selected text **bold**/_italic_ are now supported, duplicate blank lines are removed on save, and a trailing newline is added on save.
 
+## Planned Features
+
+- Extract whole sentences from lecture slides (WIP)
+- Extract and suggest Math blocks from lecture slides and from the current document
+- Add enhancements for creating lists in Typst documents
+
 ## Extension Settings
 
-- `apograph.supportedLanguages`: Languages, where Test PDF Extractor will be enabled.
+- `apograph.supportedLanguages`: Languages, where Apograph will be enabled.
 - `apograph.pdfPath`: Path to the PDF, where the completion items should be extracted from.
 - `apograph.excalidraw.defaultName`: The default file name for new Excalidraw Files (will be suggested). Supports dates using Python strftime syntax.
 - `apograph.excalidraw.imageFolder`: The folder, where the Excalidraw images should be saved to.
