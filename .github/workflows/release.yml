@@ -32,7 +32,7 @@ jobs:
         uses: "marvinpinto/action-automatic-releases@v1.2.1"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
+          automatic_release_tag: "nightly"
           prerelease: true
           title: "Alpha version ${{steps.short_sha.outputs.short_sha}}"
           files: |
