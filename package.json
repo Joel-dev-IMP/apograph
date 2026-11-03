@@ -144,6 +144,7 @@
     "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
     "@types/mocha": "^10.0.10",
     "@types/node": "24.x",
+    "@types/pdf-parse": "^1.1.5",
     "@types/vscode": "^1.144.0",
     "@vscode/test-cli": "^0.0.15",
     "@vscode/test-electron": "^3.0.0",
@@ -156,5 +157,8 @@
   "overrides": {
     "diff": "^8.0.4",
     "serialize-javascript": "^7.0.6"
+  },
+  "dependencies": {
+    "pdf-parse": "^1.1.1"
   }
 }
