@@ -14,10 +14,76 @@
   "contributes": {
     "commands": [
       {
-        "command": "apograph.helloWorld",
-        "title": "Hello World"
+        "title": "Create Excalidraw file",
+        "command": "apograph.createExcalidraw"
+      },
+      {
+        "title": "Create Draw IO file",
+        "command": "apograph.createDrawIO"
       }
     ],
+    "configuration": {
+      "title": "Apograph",
+      "properties": {
+        "apograph.supportedLanguages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "markdown",
+            "typst"
+          ],
+          "description": "Languages, where Apograph will be enabled."
+        },
+        "apograph.pdfPath": {
+          "type": "string",
+          "description": "Path to the PDF, where the completion items should be extracted from."
+        },
+        "apograph.excalidraw.defaultName": {
+          "title": "Default File Name",
+          "description": "The default file name for new Excalidraw Files. This filename will be suggested when creating a new Excalidraw image. Supports dates using Python strftime syntax.",
+          "type": "string",
+          "default": "%Y-%m-%d_"
+        },
+        "apograph.excalidraw.imageLocation": {
+          "title": "Image Location",
+          "description": "Specify, where you want to store your Excalidraw Files. Absolute paths and paths relative to the active file are supported. If the path does not exist, it will be created.",
+          "type": "string",
+          "default": "./img/"
+        },
+        "apograph.drawio.defaultName": {
+          "title": "Default File Name",
+          "description": "The default file name for new Draw IO Files. This filename will be suggested when creating a new Draw IO image. Supports dates using Python strftime syntax.",
+          "type": "string",
+          "default": "%Y-%m-%d_"
+        },
+        "apograph.drawio.imageLocation": {
+          "title": "Image Location",
+          "description": "Specify, where you want to store your Draw IO Files. Absolute paths and paths relative to the active file are supported. If the path does not exist, it will be created.",
+          "type": "string",
+          "default": "./img/"
+        },
+        "apograph.debug.generateProcessingOutput": {
+          "title": "Create Processing output",
+          "description": "Write the output of the PDF processing to a JSON file",
+          "type": "boolean",
+          "default": false
+        },
+        "apograph.debug.disableCache": {
+          "title": "Disable Cache",
+          "description": "Disable Cache for debugging purposes",
+          "type": "boolean",
+          "default": false
+        },
+        "apograph.experimental.enableLineCompletion": {
+          "title": "Enable Line Completion",
+          "description": "Enable the completion of entire lines of text",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
     "languages": [
       {
         "id": "markdown",
