@@ -1,0 +1,41 @@
+name: Publish Alpha release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Package VS Code extension
+        id: package
+        uses: nhedger/package-vscode-extension@v1
+
+      - name: Get short SHA
+        id: short_sha
+        run: echo "short_sha=$(echo ${{github.sha}} | cut -c -7)" >> "$GITHUB_OUTPUT"
+
+      - name: Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ steps.package.outputs.packagePath }}
+          asset_name: test-pdf-extractor-alpha-${{steps.short_sha.outputs.short_sha}}.vsix
+          release_name: Alpha version ${{steps.short_sha.outputs.short_sha}}
+          tag: alpha-${{steps.short_sha.outputs.short_sha}}
+          overwrite: true
+          prerelease: true
+          body: Alpha release of commit ${{steps.short_sha.outputs.short_sha}}
