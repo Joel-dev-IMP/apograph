@@ -22,7 +22,7 @@ In Typst, shortcuts for toggling selected text **bold**/_italic_ are now support
 
 ## Planned Features
 
-- Extract whole sentences from lecture slides (WIP)
+- Extract whole sentences from lecture slides (WIP, can be tried out already)
 - Extract and suggest Math blocks from lecture slides and from the current document
 - Add enhancements for creating lists in Typst documents
 
